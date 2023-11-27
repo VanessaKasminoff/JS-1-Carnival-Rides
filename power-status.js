@@ -54,14 +54,25 @@ let slot1Div = document.querySelector("#slot-1")
 let slot2Div = document.querySelector("#slot-2")
 let slot3Div = document.querySelector("#slot-3")
 
+
+function getRandNumb(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 spinButton.addEventListener("click", function () {
+
+    let slotresult1 = getRandNumb(1, 7)
+    let slotresult2 = getRandNumb(1, 7)
+    let slotresult3 = getRandNumb(1, 7)
+    
     //if all match up you win
-    let slot1 = ride4SlotMachine(3)
+
+    let slot1 = ride4SlotMachine(slotresult1)
     slot1Div.textContent = slot1
-    let slot2 = ride4SlotMachine(3)
-    slot2Div.textContent = slot1
-    let slot3 = ride4SlotMachine(3)
-    slot3Div.textContent = slot1
+    let slot2 = ride4SlotMachine(slotresult2)
+    slot2Div.textContent = slot2
+    let slot3 = ride4SlotMachine(slotresult3)
+    slot3Div.textContent = slot3
     let didTheyWin = (slot1 === slot2) && (slot2 === slot3)
 
     if (ride4PowerOn && didTheyWin) {
